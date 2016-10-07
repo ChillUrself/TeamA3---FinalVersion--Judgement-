@@ -103,11 +103,11 @@ public class Main implements KeyListener{
         try {
             //create the font to use. Specify the size!
 
-            Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("res\\fonts\\title.ttf")).deriveFont((float)main.winWidth/30f);
+            Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("res/fonts/title.ttf")).deriveFont((float)main.winWidth/30f);
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             //register the font
             titleFont = customFont;
-            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("res\\fonts\\title.ttf")));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("res/fonts/title.ttf")));
         } catch (IOException e) {
             e.printStackTrace();
         }
