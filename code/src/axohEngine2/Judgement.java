@@ -42,6 +42,11 @@ import axohEngine2.project.STATE;
 import axohEngine2.project.TYPE;
 import axohEngine2.util.OSValidator;
 
+/***************************************************************************************************
+ * 
+ * @author Dan
+ *
+ **************************************************************************************************/
 
 //Start class by also extending the 'Game.java' engine interface
 public class Judgement extends Game implements ActionListener {
