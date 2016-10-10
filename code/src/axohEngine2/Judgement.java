@@ -1049,12 +1049,15 @@ public class Judgement extends Game implements ActionListener {
      * @param keyCode Set keys for a new game action here using a switch statement
      *                Don't forget gameKeyUp
      */
+//Rebinding Keys to zxc layout
+
     void gameKeyDown(int keyCode) {
         switch (keyCode) {
             case KeyEvent.VK_LEFT:
                 keyLeft = true;
                 break;
-            case KeyEvent.VK_A:
+//replace a with z
+            case KeyEvent.VK_Z:
                 keyAttack = true;
                 break;
             case KeyEvent.VK_RIGHT:
@@ -1063,13 +1066,15 @@ public class Judgement extends Game implements ActionListener {
             case KeyEvent.VK_UP:
                 keyUp = true;
                 break;
-            case KeyEvent.VK_R:
+//replace r with c
+            case KeyEvent.VK_C:
                 keyRun = true;
                 break;
             case KeyEvent.VK_DOWN:
                 keyDown = true;
                 break;
-            case KeyEvent.VK_F:
+//replace f with x
+            case KeyEvent.VK_X:
                 keyAction = true;
                 break;
             case KeyEvent.VK_ENTER:
@@ -1116,7 +1121,8 @@ public class Judgement extends Game implements ActionListener {
             case KeyEvent.VK_LEFT:
                 keyLeft = false;
                 break;
-            case KeyEvent.VK_A:
+//replace a with z
+            case KeyEvent.VK_Z:
                 keyAttack = false;
                 break;
             case KeyEvent.VK_RIGHT:
@@ -1128,13 +1134,15 @@ public class Judgement extends Game implements ActionListener {
             case KeyEvent.VK_UP:
                 keyUp = false;
                 break;
-            case KeyEvent.VK_R:
+//replace r with c
+            case KeyEvent.VK_C:
                 keyRun = false;
                 break;
             case KeyEvent.VK_DOWN:
                 keyDown = false;
                 break;
-            case KeyEvent.VK_F:
+//replace f with x
+            case KeyEvent.VK_X:
                 keyAction = false;
                 break;
             case KeyEvent.VK_ENTER:
