@@ -160,6 +160,7 @@ public class Judgement extends Game implements ActionListener {
     Timer time = new Timer(30000, this);
     //Sound classes
     private SoundClip swing;
+    private SoundClip interaction;
     /***********************************************************************
      * Constructor
      * <p>
@@ -300,7 +301,10 @@ public class Judgement extends Game implements ActionListener {
         //*************Initialize Sound*********************
         swing = new SoundClip();
         swing.load("/sounds/SwingSwordMiss.wav");
-        
+        interaction = new SoundClip();
+        interaction.load("/sounds/OpenChest.wav");
+       
+        //*************OS Compatibility*********************
         OSValidator currOS = new OSValidator();
         
         if(currOS.isWindows())
@@ -710,6 +714,7 @@ public class Judgement extends Game implements ActionListener {
 				if(spr.getTopBound().intersects(tile.getTileBounds())) {
 						if(keyAction == true && (tile._name).equals("chest")) {
 							tile.setFrame(tile.getSpriteNumber() + 1); //Chests should have opened and closed version next to each other
+							interaction.play();
 							//inMenu.addItem(tile.event().getItem()); //Add item to inventory
 						}
 				}
