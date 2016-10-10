@@ -40,6 +40,7 @@ import axohEngine2.project.MapDatabase;
 import axohEngine2.project.OPTION;
 import axohEngine2.project.STATE;
 import axohEngine2.project.TYPE;
+import axohEngine2.sound.SoundClip;
 import axohEngine2.util.OSValidator;
 
 
@@ -157,7 +158,8 @@ public class Judgement extends Game implements ActionListener {
     private Data data;
     private File file;
     Timer time = new Timer(30000, this);
-
+    //Sound classes
+    private SoundClip swing;
     /***********************************************************************
      * Constructor
      * <p>
@@ -295,6 +297,9 @@ public class Judgement extends Game implements ActionListener {
         //****Initialize and setup Mobs*********************************************************************
         playerMob = new Mob(this, graphics(), mainCharacter, 40, TYPE.PLAYER, "mainC", true);
         //playerMob.setBounds(15, 30, 60);
+        //*************Initialize Sound*********************
+        swing = new SoundClip();
+        swing.load("/sounds/SwingSwordMiss.wav");
         
         OSValidator currOS = new OSValidator();
         
@@ -1113,6 +1118,7 @@ public class Judgement extends Game implements ActionListener {
                 break;
             case KeyEvent.VK_A:
                 keyAttack = false;
+                swing.play();
                 break;
             case KeyEvent.VK_RIGHT:
                 keyRight = false;
