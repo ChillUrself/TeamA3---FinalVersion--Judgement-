@@ -162,6 +162,8 @@ public class Judgement extends Game implements ActionListener {
     private SoundClip swing;
     private SoundClip interaction;
     private SoundClip titleMusic;
+    private SoundClip gameLoop;
+    private boolean gameMusicPlaying = false; //used in gamerefresh check (line 426) to keep the refresh from playing the song more than once.
     /***********************************************************************
      * Constructor
      * <p>
@@ -295,10 +297,8 @@ public class Judgement extends Game implements ActionListener {
         inGameMenu.load("/menus/ingamemenu.png");
         titleMenu.load("/menus/titlemenu1.png");
         titleMenu2.load("/menus/titlemenu2.png");
-
         //*****Initialize Menus***************************************************************************
         inMenu = new InGameMenu(inGameMenu);
-
         //****Initialize and setup Mobs*********************************************************************
         playerMob = new Mob(this, graphics(), mainCharacter, 40, TYPE.PLAYER, "mainC", true);
         //playerMob.setBounds(15, 30, 60);
@@ -309,7 +309,9 @@ public class Judgement extends Game implements ActionListener {
         interaction.load("/sounds/OpenChest.wav");
         titleMusic = new SoundClip();
         titleMusic.load("/sounds/TitleMusic.wav");
-       
+        gameLoop = new SoundClip();
+        gameLoop.load("/sounds/GameLoop.wav");
+        gameLoop.setLooping(true);
         //*************OS Compatibility*********************
         OSValidator currOS = new OSValidator();
         
@@ -420,7 +422,13 @@ public class Judgement extends Game implements ActionListener {
 
     private void refreshGameScreen(int maxHealth) {
         if (state == STATE.GAME) {
-
+        	//Stop the title music at the start of the game
+        	titleMusic.stop();
+			if (gameMusicPlaying  == false){
+        		gameLoop.play();
+        		gameMusicPlaying = true;
+        	}
+        	
             //Render the map, the player, any NPCs or Monsters and the player health or status
             CENTERX = SCREENWIDTH/2;
             CENTERY = SCREENHEIGHT/2;
