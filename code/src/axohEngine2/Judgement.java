@@ -161,6 +161,7 @@ public class Judgement extends Game implements ActionListener {
     //Sound classes
     private SoundClip swing;
     private SoundClip interaction;
+    private SoundClip titleMusic;
     /***********************************************************************
      * Constructor
      * <p>
@@ -258,7 +259,10 @@ public class Judgement extends Game implements ActionListener {
 			currentOverlay.accessTile(i).getEntity().setX(-300);
 		}
         requestFocus(); 
-        start(); 
+        start();
+        //start playing titleMusic
+        titleMusic.setLooping(true);
+        titleMusic.play();
     }
 
     private void initVariables() {
@@ -303,6 +307,8 @@ public class Judgement extends Game implements ActionListener {
         swing.load("/sounds/SwingSwordMiss.wav");
         interaction = new SoundClip();
         interaction.load("/sounds/OpenChest.wav");
+        titleMusic = new SoundClip();
+        titleMusic.load("/sounds/TitleMusic.wav");
        
         //*************OS Compatibility*********************
         OSValidator currOS = new OSValidator();
@@ -655,8 +661,7 @@ public class Judgement extends Game implements ActionListener {
         }
     }
 
-    private void checkSpriteSpriteOverlap(double leftOverlap, double rightOverlap, double topOverlap, double botOverlap,
-                                          double smallestOverlap) {
+    private void checkSpriteSpriteOverlap(double leftOverlap, double rightOverlap, double topOverlap, double botOverlap,double smallestOverlap) {
         if (leftOverlap < smallestOverlap) { //Left
             smallestOverlap = leftOverlap;
             shiftX -= leftOverlap;
