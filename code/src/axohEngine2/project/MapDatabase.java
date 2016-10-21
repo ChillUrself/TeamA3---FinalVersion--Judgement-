@@ -340,6 +340,7 @@ public class MapDatabase {
 		
 		cityO.addMobToMap(monster);
 		cityO.accessTile(425).addMob(monster);
+		cityO.addMobToMap(npc);
 		cityO.accessTile(630).addMob(npc);
 
         //Add the mobs to their tile home

@@ -306,6 +306,8 @@ public class Judgement extends Game implements ActionListener {
         inMenu = new InGameMenu(inGameMenu);
         //****Initialize and setup Mobs*********************************************************************
         playerMob = new Mob(this, graphics(), mainCharacter, 40, TYPE.PLAYER, "mainC", true);
+        randomNPC = new Mob(this, graphics(), mainCharacter, 40, TYPE.RANDOMPATH, "rando", true);
+//        currentMap.addMobToMap(randomNPC);
         //playerMob.setBounds(15, 30, 60);
         //*************Initialize Sound*********************
         swing = new SoundClip();
