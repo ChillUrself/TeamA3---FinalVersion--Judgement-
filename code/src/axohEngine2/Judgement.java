@@ -208,7 +208,7 @@ public class Judgement extends Game implements ActionListener {
      * Initialize all non-int variables here
      *****************************************************************************/
     void gameStartUp() {
-    	
+    	System.out.println("gameStartup");
         initVariables();
         mapBase = new MapDatabase(this, graphics(), scale);
         
@@ -231,6 +231,7 @@ public class Judgement extends Game implements ActionListener {
 			{
 				// Set the map pointer to hold the correct map object
 				currentMap = mapBase.getMap(i);
+				System.out.println(currentMap._name + "loaded");
 			}
 			// If the map database has the map name "city0"...
 			if(mapBase.getMap(i).mapName() == "cityO")
@@ -254,11 +255,13 @@ public class Judgement extends Game implements ActionListener {
 			{
 				// If so, 
 				sprites().add(currentMap.accessTile(i).mob());
+				System.out.println("add mobs from currentMap to sprites linked list");
 			}
 			// Check if the currentMap overlay has a mob object at that tile location
 			if(currentOverlay.accessTile(i).hasMob()) 
 			{
 				sprites().add(currentOverlay.accessTile(i).mob());
+				System.out.println("add mobs from currentOverlay to sprites linked list");
 			}
 			
 			currentMap.accessTile(i).getEntity().setX(-300);
@@ -306,8 +309,6 @@ public class Judgement extends Game implements ActionListener {
         inMenu = new InGameMenu(inGameMenu);
         //****Initialize and setup Mobs*********************************************************************
         playerMob = new Mob(this, graphics(), mainCharacter, 40, TYPE.PLAYER, "mainC", true);
-        randomNPC = new Mob(this, graphics(), mainCharacter, 40, TYPE.RANDOMPATH, "rando", true);
-//        currentMap.addMobToMap(randomNPC);
         //playerMob.setBounds(15, 30, 60);
         //*************Initialize Sound*********************
         swing = new SoundClip();
