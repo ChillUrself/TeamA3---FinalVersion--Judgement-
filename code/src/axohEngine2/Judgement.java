@@ -1045,6 +1045,7 @@ public class Judgement extends Game implements ActionListener {
         //Backspace(if a choice has not been made, this closes the inventory)
         if (keyBack && option == OPTION.NONE) {
             state = STATE.GAME;
+            super.setGameState(); //actually change the state of the Game.java class so that mobs can move
             option = OPTION.NONE;
             inLocation = 0;
             sectionLoc = 0;

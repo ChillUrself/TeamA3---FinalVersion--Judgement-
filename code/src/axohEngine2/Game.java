@@ -362,17 +362,17 @@ public abstract class Game extends JPanel implements Runnable {
     //update all the sprites in the current list if they are alive
     protected void updateSprites() {
     	System.out.println("updateSprites" + " Sprites:"+ _sprites.size());
-//    	System.out.println(this.state);
+    	System.out.println("Game State:" + this.state);
         for (AnimatedSprite spr : _sprites) {
             if (spr.alive()) {
                 spriteUpdate();
             }
-//            if (state == STATE.GAME){
+            if (state == STATE.GAME){
                     if (spr instanceof Mob){
                     	((Mob) spr).updateMob(); //When the game is running, update Mobs
                     	System.out.println("mob update");
                     }
-//            }
+            }
             spriteDying();
         }
     }
