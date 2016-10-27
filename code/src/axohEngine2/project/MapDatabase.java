@@ -318,12 +318,12 @@ public class MapDatabase {
 		npc.setMoveAnim(32, 48, 40, 56, 3, 8);
 		npc.setHealth(60);*/
         
-		npc = new Mob(frame, g2d, mainCharacter, 40, TYPE.RANDOMPATH, "npc", false);
+		npc = new Mob(frame, g2d, mainCharacter, 40, TYPE.RANDOMPATH, "npc", true);
 		npc.setBounds(16, 30, 60);
 		npc.setMoveAnim(32, 48, 40, 56, 3, 8);
 		npc.setHealth(100);
 		
-		monster = new Mob(frame, g2d, mainCharacter, 40, TYPE.RANDOMPATH, "monster", false);
+		monster = new Mob(frame, g2d, mainCharacter, 40, TYPE.RANDOMPATH, "monster", true);
 		monster.setBounds(16, 30, 60);
 		monster.setMoveAnim(32, 48, 40, 56, 3, 8);
 		monster.setHealth(50);
@@ -338,9 +338,16 @@ public class MapDatabase {
 		monster2.setMoveAnim(32, 48, 40, 56, 3, 8);
 		monster2.setHealth(25);
 		
+//		city.addMobToMap(monster);
+//		city.addMobToMap(npc);
+//		city.accessTile(500).addMob(monster);
+//		city.accessTile(700).addMob(npc);
 		cityO.addMobToMap(monster);
 		cityO.accessTile(425).addMob(monster);
+		System.out.println("mob added to map");
+		cityO.addMobToMap(npc);
 		cityO.accessTile(630).addMob(npc);
+		System.out.println("mob added to map");
 
         //Add the mobs to their tile home
         //cityO.accessTile(98).addMob(npc);

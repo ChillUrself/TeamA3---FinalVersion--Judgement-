@@ -48,7 +48,7 @@ public class Mob extends AnimatedSprite implements MouseListener {
     private TYPE ai;
     private int xx;
     private int yy;
-    private int speed = 10;
+    private int speed = 1;
     private boolean attacking;
     private boolean takenOut = false;
     private Attack currentAttack;
@@ -173,6 +173,7 @@ public class Mob extends AnimatedSprite implements MouseListener {
      * different ai types. Update this for future ai types.
      ****************************************************************/
     public void updateMob() {
+    	System.out.println("updateMob method called");
         if (ai == TYPE.RANDOMPATH) {
             randomPath();
         }
@@ -191,6 +192,7 @@ public class Mob extends AnimatedSprite implements MouseListener {
      * AI logic used for the randomly moving ai type
      ****************************************************************/
     private void randomPath() {
+    	System.out.println("randompath called");
         int xa = 0;
         int ya = 0;
         int r = random.nextInt(7);

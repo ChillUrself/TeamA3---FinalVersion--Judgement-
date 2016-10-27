@@ -94,7 +94,7 @@ public class Judgement extends Game implements ActionListener {
      */
     private final int inX = getScreenwidth() / 10 - 50;
     Random random = new Random();
-    Mob randomNPC;
+//    Mob randomNPC;
     private String playerName = null;
 	private boolean keyLeft, keyRun, keyRight,keyUp, keyDown, keyAction, keyBack, keyEnter, 
     				keySpace, keyEscape, keyAttack, keyHealthUp, keyHealthDown, keyMagicUp, keyMagicDown, keyFPS, keyUI;
@@ -208,7 +208,7 @@ public class Judgement extends Game implements ActionListener {
      * Initialize all non-int variables here
      *****************************************************************************/
     void gameStartUp() {
-    	
+    	System.out.println("gameStartup");
         initVariables();
         mapBase = new MapDatabase(this, graphics(), scale);
         
@@ -231,6 +231,7 @@ public class Judgement extends Game implements ActionListener {
 			{
 				// Set the map pointer to hold the correct map object
 				currentMap = mapBase.getMap(i);
+				System.out.println(currentMap._name + "loaded");
 			}
 			// If the map database has the map name "city0"...
 			if(mapBase.getMap(i).mapName() == "cityO")
@@ -254,11 +255,13 @@ public class Judgement extends Game implements ActionListener {
 			{
 				// If so, 
 				sprites().add(currentMap.accessTile(i).mob());
+				System.out.println("add mobs from currentMap to sprites linked list");
 			}
 			// Check if the currentMap overlay has a mob object at that tile location
 			if(currentOverlay.accessTile(i).hasMob()) 
 			{
 				sprites().add(currentOverlay.accessTile(i).mob());
+				System.out.println("add mobs from currentOverlay to sprites linked list");
 			}
 			
 			currentMap.accessTile(i).getEntity().setX(-300);
@@ -1045,6 +1048,7 @@ public class Judgement extends Game implements ActionListener {
         //Backspace(if a choice has not been made, this closes the inventory)
         if (keyBack && option == OPTION.NONE) {
             state = STATE.GAME;
+            super.setGameState(STATE.GAME); //actually change the state of the Game.java class so that mobs can move
             option = OPTION.NONE;
             inLocation = 0;
             sectionLoc = 0;
@@ -1284,6 +1288,9 @@ public class Judgement extends Game implements ActionListener {
 	
 	public void setState(STATE s){
 		state = s;
+	}
+	public void superState(STATE s){
+		super.setGameState(s);
 	}
 	public STATE getState(){
 		return state;
