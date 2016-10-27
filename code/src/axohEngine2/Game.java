@@ -88,8 +88,8 @@ public abstract class Game extends JPanel implements Runnable {
         return _tiles;
     }
 
-    public void setGameState() {
-        this.state = STATE.GAME;
+    public void setGameState(STATE s) {
+        this.state = s;
     }
 
     public boolean gamePaused() {

@@ -94,7 +94,7 @@ public class Judgement extends Game implements ActionListener {
      */
     private final int inX = getScreenwidth() / 10 - 50;
     Random random = new Random();
-    Mob randomNPC;
+//    Mob randomNPC;
     private String playerName = null;
 	private boolean keyLeft, keyRun, keyRight,keyUp, keyDown, keyAction, keyBack, keyEnter, 
     				keySpace, keyEscape, keyAttack, keyHealthUp, keyHealthDown, keyMagicUp, keyMagicDown, keyFPS, keyUI;
@@ -1045,7 +1045,7 @@ public class Judgement extends Game implements ActionListener {
         //Backspace(if a choice has not been made, this closes the inventory)
         if (keyBack && option == OPTION.NONE) {
             state = STATE.GAME;
-            super.setGameState(); //actually change the state of the Game.java class so that mobs can move
+            super.setGameState(STATE.GAME); //actually change the state of the Game.java class so that mobs can move
             option = OPTION.NONE;
             inLocation = 0;
             sectionLoc = 0;
@@ -1285,6 +1285,9 @@ public class Judgement extends Game implements ActionListener {
 	
 	public void setState(STATE s){
 		state = s;
+	}
+	public void superState(STATE s){
+		super.setGameState(s);
 	}
 	public STATE getState(){
 		return state;
