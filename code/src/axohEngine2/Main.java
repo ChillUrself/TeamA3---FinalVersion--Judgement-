@@ -44,7 +44,7 @@ public class Main implements KeyListener{
 	public JFrame frame = new JFrame("Judgement");
 	CardLayout layout;
 	JPanel cards;
-	
+	//variables for the game inserting the new game 
 	Judgement judge;
 	NewGame newGame;
 	LoadGame loadGame;
@@ -160,7 +160,7 @@ public class Main implements KeyListener{
 		}
 		
 
-		
+	// sets the size of the map based on the size of the computer and what computer you are running it on.	
 		public void setDimensions()
 		{
 			// Check if the system is running on a windows computer

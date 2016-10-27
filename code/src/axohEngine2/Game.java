@@ -13,7 +13,7 @@
 
 //Packages
 package axohEngine2;
-
+//importing all of the objects needed to get the game running
 import axohEngine2.data.Data;
 import axohEngine2.data.Save;
 import axohEngine2.entities.AnimatedSprite;
@@ -70,6 +70,7 @@ public abstract class Game extends JPanel implements Runnable {
 
     /***************************************************************
      * Constructor - Initialize the frame, the backBuffer, the game lists, and any other variables
+     * making the frame of the game where the player moves.
      ****************************************************************/
     public Game(int frameRate, int width, int height) {
         //Set up the JFrame and initialize variables.
