@@ -94,7 +94,7 @@ public class Judgement extends Game implements ActionListener {
      */
     private final int inX = getScreenwidth() / 10 - 50;
     Random random = new Random();
-    Mob randomNPC;
+//    Mob randomNPC;
     private String playerName = null;
 	private boolean keyLeft, keyRun, keyRight,keyUp, keyDown, keyAction, keyBack, keyEnter, 
     				keySpace, keyEscape, keyAttack, keyHealthUp, keyHealthDown, keyMagicUp, keyMagicDown, keyFPS, keyUI;
@@ -185,7 +185,7 @@ public class Judgement extends Game implements ActionListener {
     
         setFocusable(true);
     }
-
+// gets the screen width and height so the game will fit on the proper screen
     public static int getScreenwidth() {
         return SCREENWIDTH;
     }
@@ -208,7 +208,7 @@ public class Judgement extends Game implements ActionListener {
      * Initialize all non-int variables here
      *****************************************************************************/
     void gameStartUp() {
-    	
+    	System.out.println("gameStartup");
         initVariables();
         mapBase = new MapDatabase(this, graphics(), scale);
         
@@ -231,6 +231,7 @@ public class Judgement extends Game implements ActionListener {
 			{
 				// Set the map pointer to hold the correct map object
 				currentMap = mapBase.getMap(i);
+				System.out.println(currentMap._name + "loaded");
 			}
 			// If the map database has the map name "city0"...
 			if(mapBase.getMap(i).mapName() == "cityO")
@@ -254,11 +255,13 @@ public class Judgement extends Game implements ActionListener {
 			{
 				// If so, 
 				sprites().add(currentMap.accessTile(i).mob());
+				System.out.println("add mobs from currentMap to sprites linked list");
 			}
 			// Check if the currentMap overlay has a mob object at that tile location
 			if(currentOverlay.accessTile(i).hasMob()) 
 			{
 				sprites().add(currentOverlay.accessTile(i).mob());
+				System.out.println("add mobs from currentOverlay to sprites linked list");
 			}
 			
 			currentMap.accessTile(i).getEntity().setX(-300);
@@ -407,7 +410,7 @@ public class Judgement extends Game implements ActionListener {
     	ratio = maxHeight/currentHeight;
 		return ratio;
     }
-    
+   //sword collision with monster
     public boolean swordCollision () {
 		for(int i=0; i < currentOverlay.currentMobs.length; i++) {
 			if(currentOverlay.currentMobs[i]!=null) {
@@ -474,7 +477,7 @@ public class Judgement extends Game implements ActionListener {
 			} else if (!showingFPS) {
 				//g2d.clearRect(850, -482, 100, 100);
 			}
-
+//if the toggle is true then the screen sets up to what it needs to be to play the game.
 	        if(uiToggle == true) {
 	        //System.out.println("Ratio:"+screenWidthRatio());
 	       // System.out.println("Screen Width:"+SCREENWIDTH);
@@ -741,6 +744,8 @@ public class Judgement extends Game implements ActionListener {
 
     /**********************************************************
      * The Depths of Judgement Lies Below
+     * The movement of the player, if the player can move left or right, up or down, 
+     * collision into any walls or players
      * <p>
      * Key events - Mouse events
      ***********************************************************/
@@ -812,6 +817,7 @@ public class Judgement extends Game implements ActionListener {
     private void checkGame(int xa, int ya) {
         /********************************************
          * Special actions for In Game
+         * Defines what happens when the keys are pressed
          *******************************************/
         //A or left arrow(move left)
         if (keyLeft && !keyRight && left) {
@@ -1042,6 +1048,7 @@ public class Judgement extends Game implements ActionListener {
         //Backspace(if a choice has not been made, this closes the inventory)
         if (keyBack && option == OPTION.NONE) {
             state = STATE.GAME;
+            super.setGameState(STATE.GAME); //actually change the state of the Game.java class so that mobs can move
             option = OPTION.NONE;
             inLocation = 0;
             sectionLoc = 0;
@@ -1281,6 +1288,9 @@ public class Judgement extends Game implements ActionListener {
 	
 	public void setState(STATE s){
 		state = s;
+	}
+	public void superState(STATE s){
+		super.setGameState(s);
 	}
 	public STATE getState(){
 		return state;

@@ -21,7 +21,7 @@ import java.io.ObjectOutputStream;
 public class Save {
 
     private Data data;
-
+//saving the data that the player 
     public Save(Data d) {
         data = d;
     }

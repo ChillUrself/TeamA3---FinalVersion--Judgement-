@@ -44,7 +44,7 @@ public class Main implements KeyListener{
 	public JFrame frame = new JFrame("Judgement");
 	CardLayout layout;
 	JPanel cards;
-	
+	//variables for the game inserting the new game 
 	Judgement judge;
 	NewGame newGame;
 	LoadGame loadGame;
@@ -160,7 +160,7 @@ public class Main implements KeyListener{
 		}
 		
 
-		
+	// sets the size of the map based on the size of the computer and what computer you are running it on.	
 		public void setDimensions()
 		{
 			// Check if the system is running on a windows computer
@@ -244,6 +244,7 @@ public class Main implements KeyListener{
 			if(location  == 3){
 				layout.show(cards, "Judge");
 				judge.setState(STATE.GAME);
+				judge.superState(STATE.GAME); //update both state in this class and the super class
 				layout.show(cards, "Judge");
 				location = 4;
 			}
@@ -270,9 +271,11 @@ public class Main implements KeyListener{
 			if(e.getKeyCode() == KeyEvent.VK_P){
 				if(judge.getState() == STATE.INGAMEMENU){
 					judge.setState(STATE.GAME);
+					judge.superState(STATE.GAME);//change the super class state variable as well so that mobs are properly updated
 				}
 				else if(judge.getState() == STATE.GAME){
 				judge.setState(STATE.INGAMEMENU);
+				judge.superState(STATE.INGAMEMENU);
 				}
 			}
 			

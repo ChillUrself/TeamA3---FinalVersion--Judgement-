@@ -156,50 +156,50 @@ public class MapDatabase {
 
 
         //Set the tile blueprints in an array for the Map
-		Tile[] cityTiles = {g, g, pc4, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, pc, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g,
-			    g, g, p2r, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p3l, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, pc, g, g, g, g,
-			    g, pc4, p3r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p4l, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p3l, pc, g, g, g,
-			    g, p2r, p4r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p4l, p3l, pc, g, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p4l, p2l, g, g,
-			    g, p2r, g, g, f, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, f, g, f, g, g, g, g, g, p2l, g, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, wtl, wtr, f, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g, g,
-			    p1r, pc2, p1r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, wml, wmr, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g, g,
-			    p2r, g, p2r, g, g, g, g, f, g, g, g, g, g, g, g, g, g, g, g, g, g, wml, wmr, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g, g,
-			    p2r, g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, wml, wmr, g, g, g, g, g, g, c, g, c, g, g, g, g, g, p2l, g, g,
-			    p2r, g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, wml, wmr, g, g, f, f, g, g, g, g, g, g, g, g, g, g, p2l, g, g,
-			    p2r, pc4, p3r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, wml, wmr, g, g, f, f, g, g, c, g, c, g, g, g, g, g, p2l, g, g,
-			    p2r, p2r, p4r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, f, f, g, g, wbl, wbr, g, g, g, g, g, g, g, g, g, g, g, g, g, p1l, pc3, g, g,
-			    p2r, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g, g, g,
-			    p2r, p2r, g, g, g, g, g, f, f, g, g, g, g, g, g, g, g, g, g, g, g, g, g, f, g, g, g, g, g, g, g, g, g, g, g, g, p3l, pc, g, g,
-			    p2r, p2r, g, g, g, g, g, f, f, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p4l, p2l, g, g,
-			    p2r, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g, g,
-			    p3r, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g, g,
-			    p4r, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p3l, pc, g,
-			    pc4, p3r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, wtl, wtm, wtm, wtm, wtr, g, g, g, g, g, g, g, g, g, g, g, p4l, p2l, g,
-			    p2r, p4r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, wml, wmm, wmm, wmm, wmr, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, wbl, wbm, wbm, wbm, wbr, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, f, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    p2r, g, g, g, g, g, g, g, f, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p1l, pc3, g,
-			    p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g, g,
-			    p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g, g,
-			    p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g, g,
-			    p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g, g,
-			    pc2, p1r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g, g,
-			    g, pc2, p1r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g, g,
-			    g, g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p1l, p1m, p1m, p1m, p1m, p1m, p1m, p1r, g, g, g, g, g, g, g, g, g, p1l, pc3, g, g,
-			    g, g, pc2, p1m, p1r, g, g, g, g, g, g, p1l, p1m, p1m, p1m, p1m, p1m, p1m, p1m, pc3, p1l, p1m, p1m, p1m, p1m, p1r, pc2, p1m, p1m, p1m, p1m, p1r, g, g, g, g, p2l, g, g, g,
-			    g, g, g, g, pc2, p1m, p1m, p1m, p1m, p1m, p1m, pc3, g, g, g, g, g, g, g, g, p2l, g, g, g, g, pc2, p1r, g, g, g, g, pc2, p1r, g, g, g, p2l, g, g, g,
-			    g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p1l, p1m, p1m, pc3 , g, g, g, g, g, p2r, g, g, g, g, g, pc2, p1m, p1m, p1m, pc3, g, g, g};
+		Tile[] cityTiles = {g, pc4, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m,p3m, p3m, p3m, p3m, p3m, p3m, p3m,p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, pc, g,
+			    g, p2r, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, f, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, f, g, f, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, wtl, wtr, f, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, wml, wmr, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, f, g, g, g, g, g, g, g, g, g, g, g, g, g, wml, wmr, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, wml, wmr, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, wml, wmr, g, g, f, f, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, wml, wmr, g, g, f, f, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, f, f, g, g, wbl, wbr, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, f, f, g, g, g, g, g, g, g, g, g, g, g, g, g, g, f, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, f, f, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, f, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, f, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, pc2, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, pc3, g,
+			    g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g,
+			    g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g,
+			    g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g,
+			    g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g};
 
-		Tile[] cityOTiles = {e, e, e, h, e, e, e, h, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, h, e, e, e, h, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, c, c, c, c, c, c, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+			Tile[] cityOTiles = {e, e, h, e, e, e, e, e, e, e, e, e, e, e, e, e, e, h, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, h, e, e, e, e, e,
+				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+				 e, e, e, e, e, e, e, e, e, e, e, c, c, c, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
 				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
 				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
 				 e, e, e, e, e, e, e, e, e, e, e, p1l, p1m, c, p1m, p1m, p1m, p1r, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
@@ -209,16 +209,16 @@ public class MapDatabase {
 				 e, e, e, e, e, e, e, e, p4l, p4r, g, p4l, p2l, g, p2r, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
 				 e, e, e, e, e, e, e, e, e, e, e, e, p2l, g, p2r, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
 				 e, e, e, e, e, e, e, e, e, e, e, e, p2l, g, p2r, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, p2l, g, p2r, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, p2l, g, p2r, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+				 e, e, e, e, e, e, e, e, e, e, e, e, p2l, g, p2r, e, e, e, e, e, e, e, e, e, f, f, f, f, e, e, e, e, e, e, e, e, e, e, e, e,
+				 e, e, e, e, e, e, e, e, e, e, e, e, p2l, g, p2r, e, e, e, e, e, e, e, e, e, f, c, c, f, e, e, e, e, e, e, e, e, e, e, e, e,
 				 e, e, e, e, e, e, e, e, e, e, e, e, p2l, g, p2r, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
 				 e, e, e, e, e, e, e, e, e, e, e, e, p2l, g, p2r, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
 				 e, e, e, e, e, e, e, e, e, e, e, e, p3l, p3m, p3r, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, p4l, p4m, p4r, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+				 e, e, e, e, e, e, e, e, e, e, e, e, p4l, p4m, p4r, e, e, e, e, e, e, e, e, c, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
 				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
 				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, c, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, c, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
 				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
 				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
 				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
@@ -318,12 +318,12 @@ public class MapDatabase {
 		npc.setMoveAnim(32, 48, 40, 56, 3, 8);
 		npc.setHealth(60);*/
         
-		npc = new Mob(frame, g2d, mainCharacter, 40, TYPE.RANDOMPATH, "npc", false);
+		npc = new Mob(frame, g2d, mainCharacter, 40, TYPE.RANDOMPATH, "npc", true);
 		npc.setBounds(16, 30, 60);
 		npc.setMoveAnim(32, 48, 40, 56, 3, 8);
 		npc.setHealth(100);
 		
-		monster = new Mob(frame, g2d, mainCharacter, 40, TYPE.RANDOMPATH, "monster", false);
+		monster = new Mob(frame, g2d, mainCharacter, 40, TYPE.RANDOMPATH, "monster", true);
 		monster.setBounds(16, 30, 60);
 		monster.setMoveAnim(32, 48, 40, 56, 3, 8);
 		monster.setHealth(50);
@@ -338,9 +338,16 @@ public class MapDatabase {
 		monster2.setMoveAnim(32, 48, 40, 56, 3, 8);
 		monster2.setHealth(25);
 		
+//		city.addMobToMap(monster);
+//		city.addMobToMap(npc);
+//		city.accessTile(500).addMob(monster);
+//		city.accessTile(700).addMob(npc);
 		cityO.addMobToMap(monster);
 		cityO.accessTile(425).addMob(monster);
+		System.out.println("mob added to map");
+		cityO.addMobToMap(npc);
 		cityO.accessTile(630).addMob(npc);
+		System.out.println("mob added to map");
 
         //Add the mobs to their tile home
         //cityO.accessTile(98).addMob(npc);
