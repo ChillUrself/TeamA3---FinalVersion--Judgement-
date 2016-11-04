@@ -436,7 +436,7 @@ public class Judgement extends Game implements ActionListener {
         		gameLoop.play();
         		gameMusicPlaying = true;
         	}
-        	System.out.println("CenterX: " + (CENTERX - playerX) + " CenterY: " + (CENTERY - playerY));
+//        	System.out.println("CenterX: " + (CENTERX - playerX) + " CenterY: " + (CENTERY - playerY));
             //Render the map, the player, any NPCs or Monsters and the player health or status
             CENTERX = SCREENWIDTH/2;
             CENTERY = SCREENHEIGHT/2;
