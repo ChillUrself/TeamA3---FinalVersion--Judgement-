@@ -291,8 +291,10 @@ public class MapDatabase {
         warp1 = new Event("fromHouse", TYPE.WARP);
         warp1.setWarp("city", "cityO", 200, -50);
         warp2 = new Event("toHouse", TYPE.WARP);
-        warp2.setWarp("houses", "housesO", 620, 250);
-
+        warp2.setWarp("houses", "housesO", 5, 1);
+        
+        cityO.accessTile(83).addEvent(warp2);
+//        cityO.accessTile(83).addMob(mob);
         //Item events
         getPotion = new Event("getPotion", TYPE.ITEM);
         getPotion.setItem(potion);
@@ -318,7 +320,7 @@ public class MapDatabase {
 		npc.setMoveAnim(32, 48, 40, 56, 3, 8);
 		npc.setHealth(60);*/
         
-		npc = new Mob(frame, g2d, mainCharacter, 40, TYPE.RANDOMPATH, "npc", true);
+		npc = new Mob(frame, g2d, mainCharacter, 40, TYPE.SEARCH, "npc", true);
 		npc.setBounds(16, 30, 60);
 		npc.setMoveAnim(32, 48, 40, 56, 3, 8);
 		npc.setHealth(100);
@@ -344,9 +346,11 @@ public class MapDatabase {
 //		city.accessTile(700).addMob(npc);
 		cityO.addMobToMap(monster);
 		cityO.accessTile(425).addMob(monster);
+		monster.setLoc(425%40 , (int)425/40);
 		System.out.println("mob added to map");
 		cityO.addMobToMap(npc);
-		cityO.accessTile(630).addMob(npc);
+		cityO.accessTile(270).addMob(npc);
+		npc.setLoc(270%40 , (int)270/40);
 		System.out.println("mob added to map");
 
         //Add the mobs to their tile home

@@ -242,7 +242,7 @@ public abstract class Game extends JPanel implements Runnable {
             if (!gamePaused()) {
                 gameTimedUpdate();
                 updateSprites();
-                System.out.println("updatingSprites");
+//                System.out.println("updatingSprites");
                 spriteCollision();
                 tileCollision();
 				globalTileCollision();
@@ -361,8 +361,8 @@ public abstract class Game extends JPanel implements Runnable {
 
     //update all the sprites in the current list if they are alive
     protected void updateSprites() {
-    	System.out.println("updateSprites" + " Sprites:"+ _sprites.size());
-    	System.out.println("Game State:" + this.state);
+//    	System.out.println("updateSprites" + " Sprites:"+ _sprites.size());
+//    	System.out.println("Game State:" + this.state);
         for (AnimatedSprite spr : _sprites) {
             if (spr.alive()) {
                 spriteUpdate();
@@ -370,7 +370,7 @@ public abstract class Game extends JPanel implements Runnable {
             if (state == STATE.GAME){
                     if (spr instanceof Mob){
                     	((Mob) spr).updateMob(); //When the game is running, update Mobs
-                    	System.out.println("mob update");
+//                    	System.out.println("mob update");
                     }
             }
             spriteDying();

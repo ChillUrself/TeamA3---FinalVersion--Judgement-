@@ -13,6 +13,8 @@
 //Package
 package axohEngine2.entities;
 
+import axohEngine2.Judgement;
+
 //Imports
 
 import axohEngine2.project.TYPE;
@@ -72,7 +74,7 @@ public class Mob extends AnimatedSprite implements MouseListener {
 
     //Graphics and Window objects the mob needs for display
     private Graphics2D g2d;
-    private JPanel frame;
+    private Judgement frame;
 
     /************************************************************************
      * Constructor
@@ -85,7 +87,7 @@ public class Mob extends AnimatedSprite implements MouseListener {
      * @param name         - The character name in a String
      * @param hostility    - Boolean, is the mob going to attack the player?
      *************************************************************************/
-    public Mob(JPanel panel, Graphics2D g2d, SpriteSheet sheet, int spriteNumber, TYPE ai, String name, boolean hostility) {
+    public Mob(Judgement panel, Graphics2D g2d, SpriteSheet sheet, int spriteNumber, TYPE ai, String name, boolean hostility) {
         super(panel, g2d, sheet, spriteNumber, name);
         attacks = new LinkedList<>();
         this.frame = panel;
@@ -173,7 +175,7 @@ public class Mob extends AnimatedSprite implements MouseListener {
      * different ai types. Update this for future ai types.
      ****************************************************************/
     public void updateMob() {
-    	System.out.println("updateMob method called");
+//    	System.out.println("updateMob method called");
         if (ai == TYPE.RANDOMPATH) {
             randomPath();
         }
@@ -192,7 +194,7 @@ public class Mob extends AnimatedSprite implements MouseListener {
      * AI logic used for the randomly moving ai type
      ****************************************************************/
     private void randomPath() {
-    	System.out.println("randompath called");
+//    	System.out.println("randompath called");
         int xa = 0;
         int ya = 0;
         int r = random.nextInt(7);
@@ -246,7 +248,23 @@ public class Mob extends AnimatedSprite implements MouseListener {
      * AI logic used for the search for something ai type
      ****************************************************************/
     private void search() {
-    	
+    	System.out.println("playerX:" + frame.getPlayerX() + " playerY:" + frame.getPlayerY());
+    	System.out.println("LocX:" + this.getXLoc() + " LocY:" + this.getYLoc());
+    	int xa = 0;
+    	int ya = 0;
+    	if(frame.getPlayerX() > (int)this.getXLoc()){
+    		xa = 1;
+    	}
+    	if(frame.getPlayerX() <= (int)this.getXLoc()){
+    		xa = -1;
+    	}
+    	if(frame.getPlayerY() > (int)this.getYLoc()){
+    		ya = 1;
+    	}
+    	if(frame.getPlayerY() <= (int)this.getYLoc()){
+    		ya = -1;
+    	}
+    	move(xa,ya);
     }
 
     /***************************************************************
