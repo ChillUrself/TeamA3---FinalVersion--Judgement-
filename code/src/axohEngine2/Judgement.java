@@ -436,7 +436,7 @@ public class Judgement extends Game implements ActionListener {
         		gameLoop.play();
         		gameMusicPlaying = true;
         	}
-        	
+        	System.out.println("trueX: " + 40*trueX + " trueY: " + 40*trueY);
             //Render the map, the player, any NPCs or Monsters and the player health or status
             CENTERX = SCREENWIDTH/2;
             CENTERY = SCREENHEIGHT/2;
@@ -714,22 +714,22 @@ public class Judgement extends Game implements ActionListener {
 
 				if(spr.getLeftBound().intersects(tile.getTileBounds())) {
 					canMoveLeft = false;
-					System.out.println("left collision");
+//					System.out.println("left collision");
 					lastCollided = "left collision";
 				}
 				if(spr.getRightBound().intersects(tile.getTileBounds())) {
 					canMoveRight = false;
-					System.out.println("right collision");
+//					System.out.println("right collision");
 					lastCollided = "right collision";
 				}
 				if(spr.getBottomBound().intersects(tile.getTileBounds())) {
 					canMoveDown = false;
-					System.out.println("bottom collision");
+//					System.out.println("bottom collision");
 					lastCollided = "bottom collision";
 				}
 				if(spr.getTopBound().intersects(tile.getTileBounds())) {
 					canMoveUp = false;
-					System.out.println("top collision");
+//					System.out.println("top collision");
 					lastCollided = "top collision";
 				}				
 				if(spr.getTopBound().intersects(tile.getTileBounds())) {
@@ -1217,11 +1217,11 @@ public class Judgement extends Game implements ActionListener {
     }
 
     public int getPlayerX() {
-        return playerX;
+        return (int) (trueX*40);
     }
 
     public int getPlayerY() {
-        return playerY;
+        return (int) (trueY*40);
     }
 
     /*
