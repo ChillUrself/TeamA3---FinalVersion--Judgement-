@@ -1334,6 +1334,10 @@ public class Judgement extends Game implements ActionListener {
 	public void setNpcMaxHealth(int npcMaxHealth) {
 		this.npcMaxHealth = npcMaxHealth;
 	}
+	//	damage the player
+	public void damagePlayer(int d) {
+		inMenu.setHealth(inMenu.getHealth() - d);
+	}
 
 	}
 

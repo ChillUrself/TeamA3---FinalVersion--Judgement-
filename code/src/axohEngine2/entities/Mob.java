@@ -193,14 +193,24 @@ public class Mob extends AnimatedSprite implements MouseListener {
 	 ****************************************************************/
 	public void updateMob() {
 		System.out.println("updateMob method called");
+		//circle of aggression using distance formula
 		if (this.getName() != "mainC") {
-			if ( Math.sqrt((Math.pow(this.getXLoc() - frame.getPlayerX(), 2) + Math.pow((this.getYLoc() - frame.getPlayerY()),2)))  <= 60 ) {
+			if ( Math.sqrt((Math.pow(this.getXLoc() - frame.getPlayerX(), 2) + Math.pow((this.getYLoc() - frame.getPlayerY()),2)))  <= 200 ) {
 				this.setAi(TYPE.CHASE);
 			}
-			if ((((this.getXLoc() - frame.getPlayerX()) + (this.getYLoc() - frame.getPlayerY())) > 90)) {
+			if ( Math.sqrt((Math.pow(this.getXLoc() - frame.getPlayerX(), 2) + Math.pow((this.getYLoc() - frame.getPlayerY()),2)))  >= 350 ) {
 				this.setAi(TYPE.RANDOMPATH);
 			}
 		}
+		
+		//Damage Check
+		if (this.getName() != "mainC") {
+			if ( Math.sqrt((Math.pow(this.getXLoc() - frame.getPlayerX(), 2) + Math.pow((this.getYLoc() - frame.getPlayerY()),2)))  <= 1 ) {
+				frame.damagePlayer(1);
+			}
+		}
+		
+		//AI type Check
 		if (ai == TYPE.RANDOMPATH) {
 			randomPath();
 		}
@@ -284,10 +294,12 @@ public class Mob extends AnimatedSprite implements MouseListener {
 	 * AI logic used for the chase something ai type
 	 ****************************************************************/
 	private void chase() {
-		// System.out.println("playerX:" + frame.getPlayerX() + " playerY:" +
-		// frame.getPlayerY());
-		// System.out.println("LocX:" + this.getXLoc() + " LocY:" +
-		// this.getYLoc());
+		/*
+		 * Check the monster's location relative to the player
+		 * if the player is higher, go higher
+		 * if the player is futher left, go left
+		 * ect...
+		 */
 		int xa = 0;
 		int ya = 0;
 		if (frame.getPlayerX() > (int) this.getXLoc()) {
