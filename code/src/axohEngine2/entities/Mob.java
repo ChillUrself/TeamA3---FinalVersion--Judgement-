@@ -194,8 +194,10 @@ public class Mob extends AnimatedSprite implements MouseListener {
 	public void updateMob() {
 		System.out.println("updateMob method called");
 		//circle of aggression using distance formula
+		//exclude the player from chasing and damaging himself
+		//only have hostile mobs chase the player
 		if (this.getName() != "mainC") {
-			if ( Math.sqrt((Math.pow(this.getXLoc() - frame.getPlayerX(), 2) + Math.pow((this.getYLoc() - frame.getPlayerY()),2)))  <= 200 ) {
+			if (this.hostile == true && Math.sqrt((Math.pow(this.getXLoc() - frame.getPlayerX(), 2) + Math.pow((this.getYLoc() - frame.getPlayerY()),2)))  <= 200 ) {
 				this.setAi(TYPE.CHASE);
 			}
 			if ( Math.sqrt((Math.pow(this.getXLoc() - frame.getPlayerX(), 2) + Math.pow((this.getYLoc() - frame.getPlayerY()),2)))  >= 350 ) {
@@ -204,7 +206,8 @@ public class Mob extends AnimatedSprite implements MouseListener {
 		}
 		
 		//Damage Check
-		if (this.getName() != "mainC") {
+		//exclude the player and non hostile mobs
+		if (this.getName() != "mainC" && this.hostile == true) {
 			if ( Math.sqrt((Math.pow(this.getXLoc() - frame.getPlayerX(), 2) + Math.pow((this.getYLoc() - frame.getPlayerY()),2)))  <= 1 ) {
 				frame.damagePlayer(1);
 			}
