@@ -35,6 +35,7 @@ public class MapDatabase {
     SpriteSheet environment32;
     SpriteSheet extras2;
     SpriteSheet mainCharacter;
+    SpriteSheet mobCharacter;
     //Maps
     Map city;
     Map cityO;
@@ -114,6 +115,7 @@ public class MapDatabase {
         environment32 = new SpriteSheet("/textures/environments/32SizeEnvironment.png", 8, 8, 32, scale);
         extras2 = new SpriteSheet("/textures/extras/extras2.png", 16, 16, 16, scale);
         mainCharacter = new SpriteSheet("/textures/characters/mainCharacter.png", 8, 8, 32, scale);
+        mobCharacter = new SpriteSheet("/textures/characters/mobCharacter.png", 8, 8, 32, scale);
 
         //Set up tile blueprints and if they are animating
 		d = new Tile(frame, g2d, "door", environment32, 0);
@@ -156,87 +158,89 @@ public class MapDatabase {
 
 
         //Set the tile blueprints in an array for the Map
-		Tile[] cityTiles = {g, pc4, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m,p3m, p3m, p3m, p3m, p3m, p3m, p3m,p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, pc, g,
+		Tile[] cityTiles = {
+				g, pc4, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m,p3m, p3m, p3m, p3m, p3m, p3m, p3m,p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, pc, g,
 			    g, p2r, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p4m, p2l, g,
 			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
 			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
 			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, f, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, f, g, f, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, wtl, wtr, f, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, wml, wmr, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, f, g, g, g, g, g, g, g, g, g, g, g, g, g, wml, wmr, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, wml, wmr, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, wml, wmr, g, g, f, f, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, wml, wmr, g, g, f, f, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, f, f, g, g, wbl, wbr, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
 			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, f, f, g, g, g, g, g, g, g, g, g, g, g, g, g, g, f, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, f, f, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, f, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, g, f, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
-			    g, pc2, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, pc3, g,
+			    g, pc2, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, g, g, p2l, g,
+			    g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, pc4, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, pc, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, f, c, c, f, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, c, p2l, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, pc4, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, pc, g, g, g, g, p2l, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, p2r, c, c, g, g, g, g, f, f, f, f, g, g, g, g, g, g, c, p2l, g, g, g, g, p2l, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, p2r, g, g, f, wtl, wtm, wtm, wtm, wtm, wtm, wtm, wtm, wtm, wtr, f, g, g, g, p2l, g, g, g, g, p2l, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, p2r, g, g, g, wml, wmm, wmm, wmm, wmm, wmm, wmm, wmm, wmm, wmr, g, g, g, g, p2l, g, g, g, g, p2l, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, p2r, g, g, f, wbl, wbm, wbm, wbm, wbm, wbm, wbm, wbm, wbm, wbr, f, g, g, g, p2l, g, g, g, g, p2l, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g, g, g, g, p2l, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, pc2, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, pc, g, g, g, p2l, g, g, g, g, p2l, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g, g, g, p2l, g, g, g, g, p2l, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g, g, g, p2l, g, g, g, g, p2l, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, pc4, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, p3m, pc, g, g, g, p2l, g, g, g, p2l, g, g, g, g, p2l, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, p2r, c, g, g, g, f, f, f, g, g, g, c, p2l, g, g, g, p2l, g, g, g, p2l, g, g, g, g, p2l, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, p2r, g, g, g, g, g, g, g, g, g, g, g, p2l, g, g, g, p2l, g, g, g, p2l, g, g, g, g, p2l, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, p2r, g, g, g, g, g, g, g, g, g, g, g, p2l, g, g, g, p2l, g, g, g, p2l, g, g, g, g, p2l, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, p2r, g, g, g, pc4, p3m, p3m, p3m, p3m, p3m, p3m, p3m, pc3, g, g, g, p2l, g, g, g, p2l, g, g, g, g, p2l, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, p2r, g, g, g, p2r, c, g, g, g, g, g, g, g, g, g, g, p2l, g, g, g, p2l, g, g, g, g, p2l, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, p2r, g, g, g, p2r, g, g, g, g, g, g, g, g, g, g, g, p2l, g, g, g, p2l, g, g, g, g, p2l, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, p2r, g, g, g, p2r, g, g, g, pc4, p3m, p3m, p3m, p3m, p3m, p3m, p3m, pc3, g, g, g, p2l, g, g, g, g, p2l, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, p2r, g, g, g, p2r, g, g, g, p2r, g, g, g, g, g, g, g, g, g, g, g, p2l, g, g, g, g, p2l, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, p2r, g, g, g, p2r, g, g, g, p2r, g, g, g, g, g, g, g, g, g, g, g, p2l, g, g, g, g, p2l, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, p2r, g, g, g, p2r, g, g, g, p2r, g, g, g, g, g, g, g, g, g, g, g, p2l, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, p2r, g, g, g, p2r, g, g, g, p2r, g, g, g, g, g, g, g, g, g, g, g, p2l, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, p2r, g, g, g, p2r, g, g, g, p2r, g, g, g, p2r, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, p2l, g,
+			    g, pc2, p1m, p1m, p1m, pc3, g, g, g, g, g, g, g, pc2, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, p1m, pc3, g,
 			    g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g,
 			    g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g,
 			    g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g,
 			    g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g, g};
 
-			Tile[] cityOTiles = {e, e, h, e, e, e, e, e, e, e, e, e, e, e, e, e, e, h, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, h, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, c, c, c, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, p1l, p1m, c, p1m, p1m, p1m, p1r, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, c, e, ro, e, e, e, e, e, e, p2l, g, g, g, g, g, p2r, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, p2l, g, g, g, g, g, p2r, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, c, c, c, c, e, e, p3l, psr, g, psl, pc, g, p2r, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, p4l, p4r, g, p4l, p2l, g, p2r, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, p2l, g, p2r, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, p2l, g, p2r, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, p2l, g, p2r, e, e, e, e, e, e, e, e, e, f, f, f, f, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, p2l, g, p2r, e, e, e, e, e, e, e, e, e, f, c, c, f, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, p2l, g, p2r, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, p2l, g, p2r, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, p3l, p3m, p3r, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, p4l, p4m, p4r, e, e, e, e, e, e, e, e, c, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, c, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, c, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
-				 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e};
+			Tile[] cityOTiles = {
+					e, e, e, e, h, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, h, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, c, f, e, e, e, e, e, e, e, e, f, c, c, c, c, f, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, f, c, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, c, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, c, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, c, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, c, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, c, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, c,
+					 c, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e,
+					 e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e};
 
 
         /*Tile[] houseTiles = {e, e, e, e, e, e,
@@ -320,22 +324,22 @@ public class MapDatabase {
 		npc.setMoveAnim(32, 48, 40, 56, 3, 8);
 		npc.setHealth(60);*/
         
-		npc = new Mob(frame, g2d, mainCharacter, 40, TYPE.RANDOMPATH, "npc", false);
+		npc = new Mob(frame, g2d, mobCharacter, 40, TYPE.RANDOMPATH, "npc", false);
 		npc.setBounds(16, 30, 60);
 		npc.setMoveAnim(32, 48, 40, 56, 3, 8);
 		npc.setHealth(100);
 		
-		monster = new Mob(frame, g2d, mainCharacter, 40, TYPE.RANDOMPATH, "monster", true);
+		monster = new Mob(frame, g2d, mobCharacter, 40, TYPE.RANDOMPATH, "monster", true);
 		monster.setBounds(16, 30, 60);
 		monster.setMoveAnim(32, 48, 40, 56, 3, 8);
 		monster.setHealth(50);
 		
-		monster1 = new Mob(frame, g2d, mainCharacter, 40, TYPE.RANDOMPATH, "monster1", false);
+		monster1 = new Mob(frame, g2d, mobCharacter, 40, TYPE.RANDOMPATH, "monster1", false);
 		monster1.setBounds(16, 30, 60);
 		monster1.setMoveAnim(32, 48, 40, 56, 3, 8);
 		monster1.setHealth(250);
 		
-		monster2 = new Mob(frame, g2d, mainCharacter, 40, TYPE.RANDOMPATH, "monster2", false);
+		monster2 = new Mob(frame, g2d, mobCharacter, 40, TYPE.RANDOMPATH, "monster2", false);
 		monster2.setBounds(16, 30, 60);
 		monster2.setMoveAnim(32, 48, 40, 56, 3, 8);
 		monster2.setHealth(25);
