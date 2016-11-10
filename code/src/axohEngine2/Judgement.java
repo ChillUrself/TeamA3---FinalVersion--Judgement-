@@ -1338,6 +1338,10 @@ public class Judgement extends Game implements ActionListener {
 	public void damagePlayer(int d) {
 		inMenu.setHealth(inMenu.getHealth() - d);
 	}
+	
+	public Map getCurrentMap(){
+		return this.currentMap;
+	}
 
 	}
 

@@ -226,6 +226,10 @@ public class Mob extends AnimatedSprite implements MouseListener {
 		if (hostile && health < 0) {
 			setAlive(false);
 		}
+		
+		if (this.getName() != "mainC"){
+//		MobBorderCollisionCheck();
+		}
 	}
 
 	/***************************************************************
@@ -648,6 +652,11 @@ public class Mob extends AnimatedSprite implements MouseListener {
 	public double getYLoc() {
 		return entity.getY();
 	}
+	
+	public void setEntityLoc(double x, double y){
+		entity.setX(x);
+		entity.setY(y);
+	}
 
 	public void setLoc(int x, int y) { // Relative to current position
 		xx = xx + x;
@@ -667,7 +676,24 @@ public class Mob extends AnimatedSprite implements MouseListener {
 		entity.setX(x + xx);
 		entity.setY(y + yy);
 	}
-
+	
+	//check to make sure mobs do not leave map borders
+	public void MobBorderCollisionCheck(){
+		System.out.println("MobX: " + this.getXLoc() + "MobY: " + this.getYLoc() * 40);
+		System.out.println("Map X: " + this.frame.getCurrentMap().getWidth() + "MapY: " + this.frame.getCurrentMap().getHeight());
+		if (this.getXLoc() < 0){
+			this.setEntityLoc(0 , (int)this.getYLoc());
+		}
+		if (this.getXLoc() > this.frame.getCurrentMap().getWidth() * 40){
+			this.setEntityLoc(this.frame.getCurrentMap().getWidth(), (int)this.getYLoc());
+		}
+		if (this.getYLoc() > 0){
+			this.setEntityLoc((int)this.getXLoc(), 0);
+		}
+		if (this.getYLoc() < this.frame.getCurrentMap().getHeight()* 40){
+			this.setEntityLoc((int)this.getXLoc(), this.frame.getCurrentMap().getHeight() * 40);
+		}
+	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		this.randomPath();
