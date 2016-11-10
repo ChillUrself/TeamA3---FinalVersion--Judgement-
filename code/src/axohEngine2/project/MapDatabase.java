@@ -322,7 +322,7 @@ public class MapDatabase {
 		npc.setMoveAnim(32, 48, 40, 56, 3, 8);
 		npc.setHealth(60);*/
         
-		npc = new Mob(frame, g2d, mobCharacter, 40, TYPE.RANDOMPATH, "npc", false);
+		npc = new Mob(frame, g2d, mainCharacter, 40, TYPE.RANDOMPATH, "npc", false);
 		npc.setBounds(16, 30, 60);
 		npc.setMoveAnim(32, 48, 40, 56, 3, 8);
 		npc.setHealth(100);
