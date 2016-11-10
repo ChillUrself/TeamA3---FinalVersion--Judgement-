@@ -436,7 +436,7 @@ public class Judgement extends Game implements ActionListener {
         		gameLoop.play();
         		gameMusicPlaying = true;
         	}
-        	System.out.println("trueX: " + 40*trueX + " trueY: " + 40*trueY);
+//        	System.out.println("CenterX: " + (CENTERX - playerX) + " CenterY: " + (CENTERY - playerY));
             //Render the map, the player, any NPCs or Monsters and the player health or status
             CENTERX = SCREENWIDTH/2;
             CENTERY = SCREENHEIGHT/2;
@@ -1217,11 +1217,11 @@ public class Judgement extends Game implements ActionListener {
     }
 
     public int getPlayerX() {
-        return (int) (trueX*40);
+        return (int) (CENTERX - playerX);
     }
 
     public int getPlayerY() {
-        return (int) (trueY*40);
+        return (int) (CENTERY - playerY);
     }
 
     /*
@@ -1333,6 +1333,14 @@ public class Judgement extends Game implements ActionListener {
 	 */
 	public void setNpcMaxHealth(int npcMaxHealth) {
 		this.npcMaxHealth = npcMaxHealth;
+	}
+	//	damage the player
+	public void damagePlayer(int d) {
+		inMenu.setHealth(inMenu.getHealth() - d);
+	}
+	
+	public Map getCurrentMap(){
+		return this.currentMap;
 	}
 
 	}
