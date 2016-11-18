@@ -35,6 +35,7 @@ public class MapDatabase {
     SpriteSheet environment32;
     SpriteSheet extras2;
     SpriteSheet mainCharacter;
+    SpriteSheet mobCharacter;
     //Maps
     Map city;
     Map cityO;
@@ -114,6 +115,7 @@ public class MapDatabase {
         environment32 = new SpriteSheet("/textures/environments/32SizeEnvironment.png", 8, 8, 32, scale);
         extras2 = new SpriteSheet("/textures/extras/extras2.png", 16, 16, 16, scale);
         mainCharacter = new SpriteSheet("/textures/characters/mainCharacter.png", 8, 8, 32, scale);
+        mobCharacter = new SpriteSheet("/textures/characters/mobCharacter.png", 8, 8, 32, scale);
 
         //Set up tile blueprints and if they are animating
 		d = new Tile(frame, g2d, "door", environment32, 0);
@@ -325,17 +327,17 @@ public class MapDatabase {
 		npc.setMoveAnim(32, 48, 40, 56, 3, 8);
 		npc.setHealth(100);
 		
-		monster = new Mob(frame, g2d, mainCharacter, 40, TYPE.RANDOMPATH, "monster", true);
+		monster = new Mob(frame, g2d, mobCharacter, 40, TYPE.RANDOMPATH, "monster", true);
 		monster.setBounds(16, 30, 60);
 		monster.setMoveAnim(32, 48, 40, 56, 3, 8);
 		monster.setHealth(50);
 		
-		monster1 = new Mob(frame, g2d, mainCharacter, 40, TYPE.RANDOMPATH, "monster1", false);
+		monster1 = new Mob(frame, g2d, mobCharacter, 40, TYPE.RANDOMPATH, "monster1", true);
 		monster1.setBounds(16, 30, 60);
 		monster1.setMoveAnim(32, 48, 40, 56, 3, 8);
 		monster1.setHealth(250);
 		
-		monster2 = new Mob(frame, g2d, mainCharacter, 40, TYPE.RANDOMPATH, "monster2", false);
+		monster2 = new Mob(frame, g2d, mobCharacter, 40, TYPE.RANDOMPATH, "monster2", true);
 		monster2.setBounds(16, 30, 60);
 		monster2.setMoveAnim(32, 48, 40, 56, 3, 8);
 		monster2.setHealth(25);
