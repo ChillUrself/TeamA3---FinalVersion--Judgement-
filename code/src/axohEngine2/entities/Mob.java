@@ -624,8 +624,12 @@ public class Mob extends AnimatedSprite implements MouseListener {
 	 * @param damage
 	 *            - An int used to lower this mobs health
 	 *****************************************************/
+	//only deal damage to mob if mob is within certain distance
+	//It's the distance formula
 	public void takeDamage(double damage) {
-		health -= damage;
+		if ( Math.sqrt((Math.pow(this.getXLoc() - frame.getPlayerX(), 2) + Math.pow((this.getYLoc() - frame.getPlayerY()),2)))  <= 100 ) {
+			health -= damage;
+		}
 	}
 
 	/***************************************************

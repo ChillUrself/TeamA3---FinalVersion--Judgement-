@@ -291,11 +291,16 @@ public class MapDatabase {
         //Put together all events
         //Warping events
         warp1 = new Event("fromHouse", TYPE.WARP);
-        warp1.setWarp("city", "cityO", 200, -50);
+        warp1.setWarp(frame,city, cityO, 200, -50);
         warp2 = new Event("toHouse", TYPE.WARP);
-        warp2.setWarp("houses", "housesO", 5, 1);
+        warp2.setWarp(frame,houses, housesO, 5, 1);
         
+        //warp locations in each map and their coordinates
         cityO.accessTile(83).addEvent(warp2);
+        warp2.setWarpLoc(83%40, 83/40);
+        
+        houses.accessTile(5).addEvent(warp1);
+        warp1.setWarpLoc(5, 0);
 //        cityO.accessTile(83).addMob(mob);
         //Item events
         getPotion = new Event("getPotion", TYPE.ITEM);
@@ -304,7 +309,8 @@ public class MapDatabase {
         getMpotion.setItem(mpotion);
 
         //Add the events to their specific tiles and maps
-        houses.accessTile(5).addEvent(warp1);
+       
+        
         cityO.accessTile(92).addEvent(getPotion);
         cityO.accessTile(242).addEvent(getPotion);
         cityO.accessTile(328).addEvent(getPotion);

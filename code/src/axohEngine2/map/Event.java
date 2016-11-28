@@ -18,6 +18,8 @@
 //Package
 package axohEngine2.map;
 
+import axohEngine2.Judgement;
+
 //Imports
 
 import axohEngine2.project.Item;
@@ -26,9 +28,10 @@ import axohEngine2.project.TYPE;
 public class Event {
 
     //Warping variables
+	private int eventX, eventY;
     private int newX, newY;
-    private String _mapName;
-    private String _overlayName;
+    private Map _mapName;
+    private Map _overlayName;
 
     //Item getting variables
     private String _name;
@@ -36,6 +39,7 @@ public class Event {
 
     //Event Type
     private TYPE type;
+    private Judgement _judge;
 
     /**********************************************************
      * Constructor
@@ -56,21 +60,44 @@ public class Event {
      * @param x           - player x Int
      * @param y           - player y Int
      *************************************************************/
-    public void setWarp(String mapName, String overlayName, int x, int y) {
+    
+    //warp event specific methods
+    //used to find distance between player and 
+    public void setWarp(Judgement frame, Map mapName, Map overlayName, int x, int y) {
         _mapName = mapName;
         _overlayName = overlayName;
         newX = x;
         newY = y;
+        _judge = frame;
+    }
+    
+    public void setWarpLoc(int x ,int y){
+    	eventX = x;
+    	eventY = y;
+    }
+    
+    public int getWarpX(){
+    	return eventX;
+    }
+    public int getWarpY(){
+    	return eventY;
+    }
+    
+    public void updateEvents(){
+    	if (Math.sqrt((Math.pow(this.getWarpX() - _judge.getPlayerX(), 2) + Math.pow((this.getWarpY() - _judge.getPlayerY()),2)))  <= 200 ) {
+			_judge.setCurrentMap(_mapName);
+			_judge.setCurrentOverlay(_overlayName);
+		}
     }
 
     /**************************************************
      * All of these are getters, they take no paramter, but return what you ask for
      **************************************************/
-    public String getMapName() {
+    public Map getMapName() {
         return _mapName;
     }
 
-    public String getOverlayName() {
+    public Map getOverlayName() {
         return _overlayName;
     }
 

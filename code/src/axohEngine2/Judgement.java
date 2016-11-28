@@ -1342,6 +1342,13 @@ public class Judgement extends Game implements ActionListener {
 	public Map getCurrentMap(){
 		return this.currentMap;
 	}
+	
+	public void setCurrentMap(Map m){
+		currentMap = m;
+	}
+	public void setCurrentOverlay(Map o){
+		currentOverlay = o;
+	}
 
 	}
 
