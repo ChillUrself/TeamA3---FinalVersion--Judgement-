@@ -29,6 +29,7 @@ public class MapDatabase {
 
     //Array of maps
     public Map[] maps;
+    Judgement judge;
     //SpriteSheets
     SpriteSheet misc;
     SpriteSheet buildings;
@@ -108,6 +109,7 @@ public class MapDatabase {
     public MapDatabase(Judgement frame, Graphics2D g2d, int scale) {
         //Currently a maximum of 200 maps possible(Can be changed if needed)
         maps = new Map[200];
+        judge = frame;
 
         //Set up spriteSheets
         misc = new SpriteSheet("/textures/environments/environments1.png", 16, 16, 16, scale);
@@ -290,21 +292,25 @@ public class MapDatabase {
 
         //Put together all events
         //Warping events
-        warp1 = new Event("fromHouse", TYPE.WARP);
-        warp1.setWarp("city", "cityO", 200, -50);
-        warp2 = new Event("toHouse", TYPE.WARP);
-        warp2.setWarp("houses", "housesO", 5, 1);
+        warp1 = new Event(frame,"fromHouse", TYPE.WARP);
+        System.out.println("warp set");
+        warp1.setWarp(city, cityO, 200, -50, 5*40, 0);
+        warp2 = new Event(frame,"toHouse", TYPE.WARP);
+        warp2.setWarp(houses, housesO, 5, 1, (83%40) * 40, (83/40)*40);
         
+        //warp locations in each map and their coordinates
         cityO.accessTile(83).addEvent(warp2);
+        houses.accessTile(5).addEvent(warp1);
 //        cityO.accessTile(83).addMob(mob);
         //Item events
-        getPotion = new Event("getPotion", TYPE.ITEM);
+        getPotion = new Event(frame,"getPotion", TYPE.ITEM);
         getPotion.setItem(potion);
-        getMpotion = new Event("getMpotion", TYPE.ITEM);
+        getMpotion = new Event(frame,"getMpotion", TYPE.ITEM);
         getMpotion.setItem(mpotion);
 
         //Add the events to their specific tiles and maps
-        houses.accessTile(5).addEvent(warp1);
+       
+        
         cityO.accessTile(92).addEvent(getPotion);
         cityO.accessTile(242).addEvent(getPotion);
         cityO.accessTile(328).addEvent(getPotion);
