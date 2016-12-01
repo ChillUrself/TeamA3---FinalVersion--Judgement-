@@ -192,7 +192,7 @@ public class Mob extends AnimatedSprite implements MouseListener {
 	 * different ai types. Update this for future ai types.
 	 ****************************************************************/
 	public void updateMob() {
-		System.out.println("updateMob method called");
+//		System.out.println("updateMob method called");
 		//circle of aggression using distance formula
 		//exclude the player from chasing and damaging himself
 		//only have hostile mobs chase the player
@@ -225,6 +225,8 @@ public class Mob extends AnimatedSprite implements MouseListener {
 		}
 		if (hostile && health < 0) {
 			setAlive(false);
+			//set objective to go to next area after the enemy is defeated
+			frame.setObjective("Go to next area");
 		}
 		
 		if (this.getName() != "mainC"){

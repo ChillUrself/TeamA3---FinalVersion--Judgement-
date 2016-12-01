@@ -47,8 +47,9 @@ public class Event {
      * @param name - A String detailing an events name
      * @param type - An Enum detailing the type of event
      **********************************************************/
-    public Event(String name, TYPE type) {
-        _name = name;
+    public Event(Judgement j, String name, TYPE type) {
+        _judge = j;
+    	_name = name;
         this.type = type;
     }
 
@@ -63,17 +64,13 @@ public class Event {
     
     //warp event specific methods
     //used to find distance between player and 
-    public void setWarp(Judgement frame, Map mapName, Map overlayName, int x, int y) {
-        _mapName = mapName;
+    public void setWarp(Map mapName, Map overlayName, int x, int y, int xl, int yl) {
+    	_mapName = mapName;
         _overlayName = overlayName;
         newX = x;
         newY = y;
-        _judge = frame;
-    }
-    
-    public void setWarpLoc(int x ,int y){
-    	eventX = x;
-    	eventY = y;
+        eventX = xl;
+        eventY = yl;
     }
     
     public int getWarpX(){
@@ -84,9 +81,13 @@ public class Event {
     }
     
     public void updateEvents(){
-    	if (Math.sqrt((Math.pow(this.getWarpX() - _judge.getPlayerX(), 2) + Math.pow((this.getWarpY() - _judge.getPlayerY()),2)))  <= 200 ) {
+//    	System.out.println("updateEvents called");
+//    	System.out.println("eventX:" + eventX + " eventY:" + eventY);
+    	if (Math.sqrt((Math.pow(eventX - _judge.getPlayerX(), 2) + Math.pow((eventY - _judge.getPlayerY()),2)))  <= 10 ) {
 			_judge.setCurrentMap(_mapName);
 			_judge.setCurrentOverlay(_overlayName);
+			_judge.setPlayerX(newX);
+			_judge.setPlayerY(newY);
 		}
     }
 
